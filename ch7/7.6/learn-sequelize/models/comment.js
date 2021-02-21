@@ -3,6 +3,9 @@ const Sequelize = require('sequelize');
 module.exports = class Comment extends Sequelize.Model {
   static init(sequelize) {
     return super.init({
+      commenter: { //여기에 어차피 자동생성되지만  commenter를 그냥 써줘도 상관은 없는지 궁금합니다. 
+
+      },
       comment: {
         type: Sequelize.STRING(100),
         allowNull: false,

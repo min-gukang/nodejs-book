@@ -12,6 +12,7 @@ console.log('searchParams.values():', myURL.searchParams.values());
 myURL.searchParams.append('filter', 'es3');
 myURL.searchParams.append('filter', 'es5');
 console.log(myURL.searchParams.getAll('filter'));
+console.log("Aa : ", myURL);
 
 myURL.searchParams.set('filter', 'es6');
 console.log(myURL.searchParams.getAll('filter'));

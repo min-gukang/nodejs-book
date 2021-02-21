@@ -36,7 +36,7 @@ router.get('/:id/comments', async (req, res, next) => {
         where: { id: req.params.id },
       },
     });
-    console.log(comments);
+    console.log("aa",comments);
     res.json(comments);
   } catch (err) {
     console.error(err);

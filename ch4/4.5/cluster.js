@@ -8,14 +8,17 @@ if (cluster.isMaster) {
   for (let i = 0; i < numCPUs; i += 1) {
     cluster.fork();
   }
-  // 워커가 종료되었을 때
+  console.log("!");
+  // 워커가 종료되었을 때,  
   cluster.on('exit', (worker, code, signal) => {
     console.log(`${worker.process.pid}번 워커가 종료되었습니다.`);
     console.log('code', code, 'signal', signal);
-    cluster.fork();
+    // cluster.fork(); // 워커가 종료되면 다시 실행시킴. 서버가 절대 안꺼지게..!
   });
+  console.log("#");
 } else {
   // 워커들이 포트에서 대기
+  console.log("@");
   http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.write('<h1>Hello Node!</h1>');
