@@ -46,6 +46,7 @@ app.use(session({
     secure: false,
   },
 }));
+//session미들웨어를 사용하는 로직보다 무조건 아래에 있어야 한다. 
 app.use(passport.initialize());
 app.use(passport.session());
 

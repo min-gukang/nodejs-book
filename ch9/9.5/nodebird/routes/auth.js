@@ -27,7 +27,7 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
 });
 
 router.post('/login', isNotLoggedIn, (req, res, next) => {
-  passport.authenticate('local', (authError, user, info) => {
+  passport.authenticate('local', (authError, user, info) => { //로그인 요청이 들어오면 local까지 실행된후, passport가 localStrategy를 찾는다. localStrategy 실행
     if (authError) {
       console.error(authError);
       return next(authError);
@@ -35,12 +35,13 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
     if (!user) {
       return res.redirect(`/?loginError=${info.message}`);
     }
-    return req.login(user, (loginError) => {
+    return req.login(user, (loginError) => { //로그인 성공한 경우 req.login을 사용한다. 이때 passport폴더에 index.js로 간다. 
       if (loginError) {
         console.error(loginError);
         return next(loginError);
       }
-      return res.redirect('/');
+      // 여기서 session-cookie를 브라우저로 보낸다. 그래서 다음 요청부터는 session-cookie와 같이 와서 로그인 유지시킨다. 
+      return res.redirect('/'); //로그인 성공
     });
   })(req, res, next); // 미들웨어 내의 미들웨어에는 (req, res, next)를 붙입니다.
 });
