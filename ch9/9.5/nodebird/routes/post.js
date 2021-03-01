@@ -51,7 +51,7 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
           })
         }),
       );
-      await post.addHashtags(result.map(r => r[0]));
+      await post.addHashtags(result.map(r => r[0])); //id가 아닌 Hashtag객체를 넣어줘도 sequelize가 알아서 id를 넣어줌. 
     }
     res.redirect('/');
   } catch (error) {

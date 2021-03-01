@@ -6,7 +6,7 @@ const { Domain, User } = require('../models');
 
 const router = express.Router();
 
-router.post('/token', async (req, res) => {
+router.post('/token', async (req, res) => { //access 토큰 요청
   const { clientSecret } = req.body;
   try {
     const domain = await Domain.findOne({
@@ -43,7 +43,7 @@ router.post('/token', async (req, res) => {
   }
 });
 
-router.get('/test', verifyToken, (req, res) => {
+router.get('/test', verifyToken, (req, res) => { //토큰 테스트, 중간에 미들웨어로 넣는 부분!!
   res.json(req.decoded);
 });
 

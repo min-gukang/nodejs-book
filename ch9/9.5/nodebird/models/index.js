@@ -4,7 +4,6 @@ const config = require('../config/config')[env];
 const User = require('./user');
 const Post = require('./post');
 const Hashtag = require('./hashtag');
-
 const db = {};
 const sequelize = new Sequelize(
   config.database, config.username, config.password, config,
